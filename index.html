@@ -98,6 +98,7 @@
         <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6">
           <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> Categorías de ejercicios</h3>
           <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
+            <li><strong class="text-slate-900 dark:text-white">Bajo Impacto (Inicial):</strong> versiones suaves para empezar desde cero (flexión de pared, bird dog, sentadilla asistida).</li>
             <li><strong class="text-slate-900 dark:text-white">Push (empuje):</strong> empujas el peso lejos de ti (flexiones, fondos).</li>
             <li><strong class="text-slate-900 dark:text-white">Pull (tracción):</strong> jalas tu cuerpo hacia algo (dominadas, remos).</li>
             <li><strong class="text-slate-900 dark:text-white">Legs (pierna):</strong> trabajo de piernas y glúteos (sentadillas).</li>
@@ -119,7 +120,7 @@
         <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="route" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> ¿Por dónde empiezo?</h3>
         <ol class="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-decimal list-inside">
           <li>Ve a la pestaña <strong class="text-slate-900 dark:text-white">Ejercicios</strong> y lee la explicación de cada movimiento (tienen pasos y un tip para principiantes).</li>
-          <li>Ve a <strong class="text-slate-900 dark:text-white">Planificador</strong> y carga la plantilla <strong class="text-slate-900 dark:text-white">"Principiante (Full Body 3 días)"</strong> en el menú desplegable.</li>
+          <li>Ve a <strong class="text-slate-900 dark:text-white">Planificador</strong> y carga la plantilla <strong class="text-slate-900 dark:text-white">"Absoluto Principiante (Bajo Impacto)"</strong> en el menú desplegable. Cuando te sientas cómoda, avanza a "Principiante (Full Body 3 días)".</li>
           <li>Cuando quieras entrenar, entra a <strong class="text-slate-900 dark:text-white">Entrenar</strong>, elige el día y ve registrando tus repeticiones.</li>
           <li>Revisa tu avance en <strong class="text-slate-900 dark:text-white">Progreso</strong>.</li>
         </ol>
@@ -143,6 +144,7 @@
         <div class="flex flex-wrap gap-2">
           <select id="preset-select" onchange="loadPresetRoutine(this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500">
             <option value="">-- Cargar Plantilla --</option>
+            <option value="absolute_beginner">Absoluto Principiante (Bajo Impacto)</option>
             <option value="beginner">Principiante (Full Body 3 días)</option>
             <option value="intermediate">Intermedio (Push / Pull / Legs)</option>
             <option value="advanced">Avanzado (Fuerza y Progresiones)</option>
@@ -173,6 +175,7 @@
           <input type="text" id="exercise-search" oninput="filterExercises()" placeholder="Buscar ejercicio..." class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500 w-full md:w-48">
           <select id="category-filter" onchange="filterExercises()" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500">
             <option value="all">Todas las categorías</option>
+            <option value="lowimpact">Bajo Impacto (Inicial)</option>
             <option value="push">Empuje (Push)</option>
             <option value="pull">Tracción (Pull)</option>
             <option value="legs">Pierna (Legs)</option>
@@ -317,6 +320,21 @@
   <script>
     // Base de datos de ejercicios de Calistenia
     const exerciseDB = [
+      { id: 'wall_pushup', name: 'Flexión de Pared', category: 'lowimpact', muscle: 'Pecho, Tríceps (suave)', level: 'Inicial', desc: 'La versión más suave de flexión, ideal para el primer día.',
+        howTo: ['Párate frente a una pared, brazos extendidos, manos a la altura del pecho.', 'Da un paso atrás hasta quedar ligeramente inclinada.', 'Dobla los codos y acerca el pecho a la pared.', 'Empuja de regreso a la posición inicial.'],
+        tip: 'Cuanto más cerca estés de la pared, más fácil es. Aléjate un poco cada semana para ir aumentando la dificultad.' },
+      { id: 'incline_pushup', name: 'Flexión Inclinada', category: 'lowimpact', muscle: 'Pecho, Tríceps (suave)', level: 'Inicial', desc: 'Un escalón intermedio entre la flexión de pared y la de rodillas.',
+        howTo: ['Apoya las manos en una superficie elevada y estable (mesa, banco, borde de un sofá).', 'Cuerpo recto en diagonal, core apretado.', 'Baja el pecho hacia el borde doblando los codos.', 'Empuja para volver arriba.'],
+        tip: 'Entre más baja la superficie donde apoyas las manos, más exigente se vuelve. Ve bajando la altura poco a poco.' },
+      { id: 'knee_plank', name: 'Plancha de Rodillas', category: 'lowimpact', muscle: 'Core (suave)', level: 'Inicial', desc: 'Estabilidad del core sin la exigencia de la plancha completa.',
+        howTo: ['Apóyate en antebrazos y rodillas (en vez de puntas de los pies).', 'Cuerpo recto desde la cabeza hasta las rodillas.', 'Aprieta el abdomen suavemente.', 'Sostén respirando con normalidad.'],
+        tip: 'Empieza con 10-15 segundos. Cuando se sienta cómoda, prueba la plancha completa de la biblioteca de "Core".' },
+      { id: 'bird_dog', name: 'Bird Dog (Perro de Caza)', category: 'lowimpact', muscle: 'Core, Equilibrio, Espalda baja', level: 'Inicial', desc: 'Ejercicio de equilibrio y estabilidad muy usado en Pilates, cero impacto en articulaciones.',
+        howTo: ['Apóyate en el piso sobre manos y rodillas (posición de mesa).', 'Extiende al mismo tiempo un brazo hacia adelante y la pierna contraria hacia atrás.', 'Mantén la espalda recta y la cadera estable, sin rotar.', 'Sostén 2-3 segundos y regresa. Alterna de lado.'],
+        tip: 'Si pierdes el equilibrio, extiende solo el brazo o solo la pierna primero, por separado.' },
+      { id: 'assisted_squat', name: 'Sentadilla Asistida', category: 'lowimpact', muscle: 'Piernas, Glúteos (suave)', level: 'Inicial', desc: 'Sentadilla apoyada en una silla o pared para mayor control y seguridad.',
+        howTo: ['Ponte de pie frente a una silla estable, de espaldas a ella, o con las manos apoyadas en una pared/mesa al frente.', 'Baja lentamente la cadera como si fueras a sentarte.', 'Toca apenas el asiento con los glúteos (sin dejar caer el peso) o baja hasta donde te sea cómodo.', 'Sube empujando con los talones.'],
+        tip: 'Usar apoyo te da seguridad para aprender el movimiento correcto antes de pasar a la sentadilla libre.' },
       { id: 'pushups', name: 'Flexiones (Push-ups)', category: 'push', muscle: 'Pecho, Tríceps, Deltoides', level: 'Principiante', desc: 'Ejercicio fundamental de empuje horizontal.',
         howTo: ['Manos apoyadas un poco más anchas que los hombros.', 'Cuerpo recto de cabeza a talones, core apretado.', 'Baja el pecho casi hasta el piso doblando los codos.', 'Empuja el piso para volver a subir sin perder la línea recta.'],
         tip: 'Si aún no puedes hacerlas completas, hazlas apoyando las rodillas en el piso hasta ganar fuerza.' },
@@ -356,6 +374,15 @@
     ];
 
     const presetRoutines = {
+      absolute_beginner: {
+        Lunes: ['wall_pushup', 'bird_dog', 'assisted_squat'],
+        Martes: [],
+        Miércoles: ['incline_pushup', 'knee_plank', 'assisted_squat'],
+        Jueves: [],
+        Viernes: ['wall_pushup', 'bird_dog', 'knee_plank'],
+        Sábado: [],
+        Domingo: []
+      },
       beginner: {
         Lunes: ['pushups', 'rows', 'squats'],
         Martes: [],
