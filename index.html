@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" class="dark">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +7,7 @@
 
   <!-- Metadatos PWA -->
   <link rel="manifest" href="./manifest.json">
-  <meta name="theme-color" content="#0f172a">
+  <meta name="theme-color" content="#f8fafc">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="CalisTech">
@@ -31,48 +31,48 @@
               600: '#059669',
               700: '#047857',
               900: '#064e3b',
-            },
-            darkbg: '#0f172a',
-            cardbg: '#1e293b',
-            cardborder: '#334155'
+            }
           }
         }
       }
     }
   </script>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen font-sans flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100 min-h-screen font-sans flex flex-col justify-between selection:bg-brand-500 selection:text-white transition-colors">
 
   <!-- Encabezado / Navegación -->
-  <header class="bg-slate-800/80 backdrop-blur-md border-b border-slate-700 sticky top-0 z-40">
+  <header class="bg-white/80 dark:bg-slate-800/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 sticky top-0 z-40">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <div class="bg-brand-500 text-slate-950 p-2 rounded-xl shadow-lg shadow-brand-500/20">
           <i data-lucide="dumbbell" class="w-6 h-6"></i>
         </div>
-        <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
-          CalisTech <span class="text-brand-500 text-xs px-2 py-0.5 rounded-full border border-brand-500/30 bg-brand-500/10 font-mono ml-1">PRO</span>
+        <span class="font-bold text-xl tracking-tight text-slate-900 dark:bg-gradient-to-r dark:from-white dark:to-slate-400 dark:bg-clip-text dark:text-transparent">
+          CalisTech <span class="text-brand-600 dark:text-brand-500 text-xs px-2 py-0.5 rounded-full border border-brand-500/30 bg-brand-500/10 font-mono ml-1">PRO</span>
         </span>
       </div>
 
-      <nav class="hidden md:flex space-x-1 bg-slate-900/60 p-1 rounded-xl border border-slate-700/50">
+      <nav class="hidden md:flex space-x-1 bg-slate-100 dark:bg-slate-900/60 p-1 rounded-xl border border-slate-200 dark:border-slate-700/50">
+        <button onclick="switchTab('guide')" id="nav-guide" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="w-4 h-4"></i> Guía
+        </button>
         <button onclick="switchTab('planner')" id="nav-planner" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-white bg-brand-600 transition-all flex items-center gap-2">
           <i data-lucide="calendar" class="w-4 h-4"></i> Planificador
         </button>
-        <button onclick="switchTab('library')" id="nav-library" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-2">
+        <button onclick="switchTab('library')" id="nav-library" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2">
           <i data-lucide="book-open" class="w-4 h-4"></i> Ejercicios
         </button>
-        <button onclick="switchTab('workout')" id="nav-workout" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-2">
+        <button onclick="switchTab('workout')" id="nav-workout" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2">
           <i data-lucide="play-circle" class="w-4 h-4"></i> Entrenar
         </button>
-        <button onclick="switchTab('stats')" id="nav-stats" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-400 hover:text-white transition-all flex items-center gap-2">
+        <button onclick="switchTab('stats')" id="nav-stats" class="nav-btn px-4 py-2 text-sm font-medium rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all flex items-center gap-2">
           <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Progreso
         </button>
       </nav>
 
       <div class="flex items-center gap-2">
-        <button onclick="toggleTheme()" class="p-2 rounded-xl border border-slate-700 text-slate-400 hover:text-white hover:bg-slate-800 transition">
-          <i data-lucide="sun" id="theme-icon" class="w-5 h-5"></i>
+        <button onclick="toggleTheme()" class="p-2 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i data-lucide="moon" id="theme-icon" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
@@ -81,24 +81,73 @@
   <!-- Contenido Principal -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
 
+    <!-- SECCIÓN 0: GUÍA PARA PRINCIPIANTES -->
+    <section id="tab-guide" class="tab-content hidden">
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+          <i data-lucide="graduation-cap" class="text-brand-600 dark:text-brand-500"></i> Guía para Principiantes
+        </h1>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Todo lo que necesitas saber antes de empezar tu primer plan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6">
+          <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="info" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> ¿Qué es la calistenia?</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Es entrenar usando solo el peso de tu propio cuerpo (flexiones, dominadas, sentadillas, plancha, etc.), sin necesidad de máquinas ni pesas. Se puede hacer en casa, en un parque o en una barra de dominadas.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6">
+          <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="layers" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> Categorías de ejercicios</h3>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-1.5">
+            <li><strong class="text-slate-900 dark:text-white">Push (empuje):</strong> empujas el peso lejos de ti (flexiones, fondos).</li>
+            <li><strong class="text-slate-900 dark:text-white">Pull (tracción):</strong> jalas tu cuerpo hacia algo (dominadas, remos).</li>
+            <li><strong class="text-slate-900 dark:text-white">Legs (pierna):</strong> trabajo de piernas y glúteos (sentadillas).</li>
+            <li><strong class="text-slate-900 dark:text-white">Core:</strong> abdomen y zona media (plancha, elevaciones).</li>
+            <li><strong class="text-slate-900 dark:text-white">Skills (habilidades):</strong> trucos avanzados (muscle-up, pino).</li>
+          </ul>
+        </div>
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6">
+          <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="repeat" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> Series, repeticiones y descanso</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Si estás empezando: 3 series por ejercicio, haz las repeticiones que puedas con buena técnica (aunque sean pocas) y descansa 60-90 segundos entre series. Usa el temporizador de descanso en la pestaña "Entrenar".</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6">
+          <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="shield-check" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> Seguridad básica</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Calienta 5 minutos antes (movilidad articular, algo de cardio suave). Prioriza siempre la técnica sobre la cantidad de repeticiones. Si sientes dolor articular (no solo cansancio muscular), detente.</p>
+        </div>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-6 mb-6">
+        <h3 class="font-bold text-slate-900 dark:text-white mb-3 flex items-center gap-2"><i data-lucide="route" class="w-5 h-5 text-brand-600 dark:text-brand-500"></i> ¿Por dónde empiezo?</h3>
+        <ol class="text-sm text-slate-600 dark:text-slate-300 space-y-2 list-decimal list-inside">
+          <li>Ve a la pestaña <strong class="text-slate-900 dark:text-white">Ejercicios</strong> y lee la explicación de cada movimiento (tienen pasos y un tip para principiantes).</li>
+          <li>Ve a <strong class="text-slate-900 dark:text-white">Planificador</strong> y carga la plantilla <strong class="text-slate-900 dark:text-white">"Principiante (Full Body 3 días)"</strong> en el menú desplegable.</li>
+          <li>Cuando quieras entrenar, entra a <strong class="text-slate-900 dark:text-white">Entrenar</strong>, elige el día y ve registrando tus repeticiones.</li>
+          <li>Revisa tu avance en <strong class="text-slate-900 dark:text-white">Progreso</strong>.</li>
+        </ol>
+      </div>
+
+      <button onclick="switchTab('library')" class="w-full md:w-auto px-6 py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2">
+        <i data-lucide="book-open" class="w-5 h-5"></i> Ver ejercicios explicados
+      </button>
+    </section>
+
     <!-- SECCIÓN 1: PLANIFICADOR SEMANAL -->
     <section id="tab-planner" class="tab-content">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="calendar-days" class="text-brand-500"></i> Plan Semanal de Calistenia
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="calendar-days" class="text-brand-600 dark:text-brand-500"></i> Plan Semanal de Calistenia
           </h1>
-          <p class="text-slate-400 text-sm">Organiza tu rutina semanal o selecciona una plantilla predefinida.</p>
+          <p class="text-slate-500 dark:text-slate-400 text-sm">Organiza tu rutina semanal o selecciona una plantilla predefinida.</p>
         </div>
 
         <div class="flex flex-wrap gap-2">
-          <select id="preset-select" onchange="loadPresetRoutine(this.value)" class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500">
+          <select id="preset-select" onchange="loadPresetRoutine(this.value)" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500">
             <option value="">-- Cargar Plantilla --</option>
             <option value="beginner">Principiante (Full Body 3 días)</option>
             <option value="intermediate">Intermedio (Push / Pull / Legs)</option>
             <option value="advanced">Avanzado (Fuerza y Progresiones)</option>
           </select>
-          <button onclick="clearPlanner()" class="px-3 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 text-sm rounded-xl transition flex items-center gap-1">
+          <button onclick="clearPlanner()" class="px-3 py-2 bg-rose-500/10 hover:bg-rose-500/20 text-rose-600 dark:text-rose-400 border border-rose-500/20 text-sm rounded-xl transition flex items-center gap-1">
             <i data-lucide="trash-2" class="w-4 h-4"></i> Limpiar
           </button>
         </div>
@@ -114,15 +163,15 @@
     <section id="tab-library" class="tab-content hidden">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="book-open" class="text-brand-500"></i> Biblioteca de Ejercicios
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="book-open" class="text-brand-600 dark:text-brand-500"></i> Biblioteca de Ejercicios
           </h1>
-          <p class="text-slate-400 text-sm">Explora técnicas, progresiones y músculos objetivo.</p>
+          <p class="text-slate-500 dark:text-slate-400 text-sm">Explora técnicas, progresiones y músculos objetivo.</p>
         </div>
 
         <div class="flex flex-wrap gap-2 w-full md:w-auto">
-          <input type="text" id="exercise-search" oninput="filterExercises()" placeholder="Buscar ejercicio..." class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500 w-full md:w-48">
-          <select id="category-filter" onchange="filterExercises()" class="bg-slate-800 border border-slate-700 text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500">
+          <input type="text" id="exercise-search" oninput="filterExercises()" placeholder="Buscar ejercicio..." class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500 w-full md:w-48">
+          <select id="category-filter" onchange="filterExercises()" class="bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-sm rounded-xl px-3 py-2 outline-none focus:border-brand-500">
             <option value="all">Todas las categorías</option>
             <option value="push">Empuje (Push)</option>
             <option value="pull">Tracción (Pull)</option>
@@ -140,35 +189,35 @@
 
     <!-- SECCIÓN 3: MODO ENTRENAMIENTO -->
     <section id="tab-workout" class="tab-content hidden">
-      <div class="max-w-3xl mx-auto bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-2xl">
-        <div class="flex justify-between items-center pb-4 border-b border-slate-700 mb-6">
+      <div class="max-w-3xl mx-auto bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-6 shadow-xl">
+        <div class="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-700 mb-6">
           <div>
-            <h2 class="text-xl font-bold text-white flex items-center gap-2">
-              <i data-lucide="play-circle" class="text-brand-500"></i> Sesión Activa
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+              <i data-lucide="play-circle" class="text-brand-600 dark:text-brand-500"></i> Sesión Activa
             </h2>
-            <p id="workout-day-title" class="text-sm text-slate-400">Selecciona un día en el planificador para comenzar</p>
+            <p id="workout-day-title" class="text-sm text-slate-500 dark:text-slate-400">Selecciona un día en el planificador para comenzar</p>
           </div>
           <div class="text-right">
-            <span id="workout-timer" class="font-mono text-2xl font-bold text-brand-500">00:00</span>
-            <p class="text-xs text-slate-400">Tiempo de sesión</p>
+            <span id="workout-timer" class="font-mono text-2xl font-bold text-brand-600 dark:text-brand-500">00:00</span>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Tiempo de sesión</p>
           </div>
         </div>
 
         <!-- Temporizador de Descanso -->
-        <div class="bg-slate-900 border border-slate-700/60 p-4 rounded-xl mb-6 flex items-center justify-between">
+        <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/60 p-4 rounded-xl mb-6 flex items-center justify-between">
           <div class="flex items-center gap-3">
-            <div class="p-2 bg-brand-500/10 text-brand-500 rounded-lg">
+            <div class="p-2 bg-brand-500/10 text-brand-600 dark:text-brand-500 rounded-lg">
               <i data-lucide="timer" class="w-5 h-5"></i>
             </div>
             <div>
-              <p class="text-xs text-slate-400">Temporizador de descanso</p>
-              <p id="rest-timer-display" class="font-mono text-lg font-bold text-white">00:00</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Temporizador de descanso</p>
+              <p id="rest-timer-display" class="font-mono text-lg font-bold text-slate-900 dark:text-white">00:00</p>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="startRestTimer(60)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-xs font-medium transition">60s</button>
-            <button onclick="startRestTimer(90)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-xs font-medium transition">90s</button>
-            <button onclick="startRestTimer(120)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 border border-slate-600 rounded-lg text-xs font-medium transition">120s</button>
+            <button onclick="startRestTimer(60)" class="px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-medium transition">60s</button>
+            <button onclick="startRestTimer(90)" class="px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-medium transition">90s</button>
+            <button onclick="startRestTimer(120)" class="px-3 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg text-xs font-medium transition">120s</button>
           </div>
         </div>
 
@@ -177,7 +226,7 @@
           <!-- Ejercicios para registrar -->
         </div>
 
-        <button onclick="finishWorkout()" class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-slate-950 font-bold rounded-xl transition shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2">
+        <button onclick="finishWorkout()" class="w-full py-3 bg-brand-600 hover:bg-brand-500 text-white font-bold rounded-xl transition shadow-lg shadow-brand-500/20 flex items-center justify-center gap-2">
           <i data-lucide="check-circle-2" class="w-5 h-5"></i> Guardar y Finalizar Entrenamiento
         </button>
       </div>
@@ -187,56 +236,56 @@
     <section id="tab-stats" class="tab-content hidden">
       <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
-          <h1 class="text-2xl font-bold text-white flex items-center gap-2">
-            <i data-lucide="bar-chart-3" class="text-brand-500"></i> Historial y Estadísticas
+          <h1 class="text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="text-brand-600 dark:text-brand-500"></i> Historial y Estadísticas
           </h1>
-          <p class="text-slate-400 text-sm">Visualiza tu volumen de entrenamiento y constancia.</p>
+          <p class="text-slate-500 dark:text-slate-400 text-sm">Visualiza tu volumen de entrenamiento y constancia.</p>
         </div>
 
         <div class="flex gap-2">
-          <button onclick="exportData()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs rounded-xl transition flex items-center gap-1">
+          <button onclick="exportData()" class="px-3 py-2 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs rounded-xl transition flex items-center gap-1">
             <i data-lucide="download" class="w-4 h-4"></i> Exportar
           </button>
-          <button onclick="importDataPrompt()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 text-xs rounded-xl transition flex items-center gap-1">
+          <button onclick="importDataPrompt()" class="px-3 py-2 bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-xs rounded-xl transition flex items-center gap-1">
             <i data-lucide="upload" class="w-4 h-4"></i> Importar
           </button>
         </div>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-        <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl flex items-center gap-4">
-          <div class="p-3 bg-brand-500/10 text-brand-500 rounded-xl">
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl flex items-center gap-4">
+          <div class="p-3 bg-brand-500/10 text-brand-600 dark:text-brand-500 rounded-xl">
             <i data-lucide="flame" class="w-6 h-6"></i>
           </div>
           <div>
-            <p class="text-xs text-slate-400">Total Sesiones</p>
-            <h3 id="stat-total-workouts" class="text-2xl font-bold text-white">0</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Total Sesiones</p>
+            <h3 id="stat-total-workouts" class="text-2xl font-bold text-slate-900 dark:text-white">0</h3>
           </div>
         </div>
 
-        <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl flex items-center gap-4">
-          <div class="p-3 bg-blue-500/10 text-blue-500 rounded-xl">
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl flex items-center gap-4">
+          <div class="p-3 bg-blue-500/10 text-blue-600 dark:text-blue-500 rounded-xl">
             <i data-lucide="repeat" class="w-6 h-6"></i>
           </div>
           <div>
-            <p class="text-xs text-slate-400">Repeticiones Totales</p>
-            <h3 id="stat-total-reps" class="text-2xl font-bold text-white">0</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Repeticiones Totales</p>
+            <h3 id="stat-total-reps" class="text-2xl font-bold text-slate-900 dark:text-white">0</h3>
           </div>
         </div>
 
-        <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl flex items-center gap-4">
-          <div class="p-3 bg-purple-500/10 text-purple-500 rounded-xl">
+        <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-5 rounded-2xl flex items-center gap-4">
+          <div class="p-3 bg-purple-500/10 text-purple-600 dark:text-purple-500 rounded-xl">
             <i data-lucide="award" class="w-6 h-6"></i>
           </div>
           <div>
-            <p class="text-xs text-slate-400">Día Más Frecuente</p>
-            <h3 id="stat-top-day" class="text-2xl font-bold text-white">-</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Día Más Frecuente</p>
+            <h3 id="stat-top-day" class="text-2xl font-bold text-slate-900 dark:text-white">-</h3>
           </div>
         </div>
       </div>
 
-      <div class="bg-slate-800 border border-slate-700 p-6 rounded-2xl">
-        <h3 class="text-lg font-bold text-white mb-4">Progreso de Repeticiones Registradas</h3>
+      <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-6 rounded-2xl">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-4">Progreso de Repeticiones Registradas</h3>
         <div class="h-64">
           <canvas id="progressChart"></canvas>
         </div>
@@ -246,17 +295,20 @@
   </main>
 
   <!-- Navegación Inferior (Móvil) -->
-  <nav class="md:hidden bg-slate-800 border-t border-slate-700 fixed bottom-0 left-0 right-0 z-40 px-2 py-2 flex justify-around">
-    <button onclick="switchTab('planner')" id="mob-planner" class="flex flex-col items-center gap-1 text-brand-500 text-xs">
+  <nav class="md:hidden bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 fixed bottom-0 left-0 right-0 z-40 px-2 py-2 flex justify-around">
+    <button onclick="switchTab('guide')" id="mob-guide" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 text-xs">
+      <i data-lucide="graduation-cap" class="w-5 h-5"></i> Guía
+    </button>
+    <button onclick="switchTab('planner')" id="mob-planner" class="flex flex-col items-center gap-1 text-brand-600 dark:text-brand-500 text-xs">
       <i data-lucide="calendar" class="w-5 h-5"></i> Plan
     </button>
-    <button onclick="switchTab('library')" id="mob-library" class="flex flex-col items-center gap-1 text-slate-400 text-xs">
+    <button onclick="switchTab('library')" id="mob-library" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 text-xs">
       <i data-lucide="book-open" class="w-5 h-5"></i> Ejercicios
     </button>
-    <button onclick="switchTab('workout')" id="mob-workout" class="flex flex-col items-center gap-1 text-slate-400 text-xs">
+    <button onclick="switchTab('workout')" id="mob-workout" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 text-xs">
       <i data-lucide="play-circle" class="w-5 h-5"></i> Entrenar
     </button>
-    <button onclick="switchTab('stats')" id="mob-stats" class="flex flex-col items-center gap-1 text-slate-400 text-xs">
+    <button onclick="switchTab('stats')" id="mob-stats" class="flex flex-col items-center gap-1 text-slate-500 dark:text-slate-400 text-xs">
       <i data-lucide="bar-chart-3" class="w-5 h-5"></i> Progreso
     </button>
   </nav>
@@ -265,18 +317,42 @@
   <script>
     // Base de datos de ejercicios de Calistenia
     const exerciseDB = [
-      { id: 'pushups', name: 'Flexiones (Push-ups)', category: 'push', muscle: 'Pecho, Tríceps, Deltoides', level: 'Principiante', desc: 'Ejercicio fundamental de empuje horizontal.' },
-      { id: 'dips', name: 'Fondos en Paralelas (Dips)', category: 'push', muscle: 'Pecho inferior, Tríceps', level: 'Intermedio', desc: 'Excelente para masa muscular en torso.' },
-      { id: 'pike_pushups', name: 'Flexiones Pike', category: 'push', muscle: 'Hombros, Tríceps', level: 'Intermedio', desc: 'Progresión directa para la flexión en pino.' },
-      { id: 'pullups', name: 'Dominadas Pronas (Pull-ups)', category: 'pull', muscle: 'Dorsal ancho, Bíceps', level: 'Intermedio', desc: 'El rey de los ejercicios de tracción.' },
-      { id: 'chinups', name: 'Dominadas Supinas (Chin-ups)', category: 'pull', muscle: 'Bíceps, Dorsal', level: 'Principiante', desc: 'Enfoca mayor trabajo en los brazos.' },
-      { id: 'rows', name: 'Remos en Anillas / Barra Baja', category: 'pull', muscle: 'Espalda alta, Trapecios', level: 'Principiante', desc: 'Tracción horizontal básica.' },
-      { id: 'squats', name: 'Sentadillas libres', category: 'legs', muscle: 'Cuádriceps, Glúteos', level: 'Principiante', desc: 'Trabajo básico de tren inferior.' },
-      { id: 'pistol_squats', name: 'Sentadillas Pistol', category: 'legs', muscle: 'Cuádriceps, Equilibrio', level: 'Avanzado', desc: 'Sentadilla unilateral de alta exigencia.' },
-      { id: 'leg_raises', name: 'Elevaciones de Piernas colgado', category: 'core', muscle: 'Abdomen, Flexores de cadera', level: 'Intermedio', desc: 'Fortalece la sección media completa.' },
-      { id: 'plank', name: 'Plancha Abdominal', category: 'core', muscle: 'Core isométrico', level: 'Principiante', desc: 'Estabilidad y resistencia del core.' },
-      { id: 'muscle_up', name: 'Muscle-up', category: 'skills', muscle: 'Espalda, Pecho, Potencia', level: 'Avanzado', desc: 'Transición explosiva sobre la barra.' },
-      { id: 'handstand', name: 'Pino (Handstand)', category: 'skills', muscle: 'Hombros, Equilibrio', level: 'Avanzado', desc: 'Habilidad isométrica sobre manos.' }
+      { id: 'pushups', name: 'Flexiones (Push-ups)', category: 'push', muscle: 'Pecho, Tríceps, Deltoides', level: 'Principiante', desc: 'Ejercicio fundamental de empuje horizontal.',
+        howTo: ['Manos apoyadas un poco más anchas que los hombros.', 'Cuerpo recto de cabeza a talones, core apretado.', 'Baja el pecho casi hasta el piso doblando los codos.', 'Empuja el piso para volver a subir sin perder la línea recta.'],
+        tip: 'Si aún no puedes hacerlas completas, hazlas apoyando las rodillas en el piso hasta ganar fuerza.' },
+      { id: 'dips', name: 'Fondos en Paralelas (Dips)', category: 'push', muscle: 'Pecho inferior, Tríceps', level: 'Intermedio', desc: 'Excelente para masa muscular en torso.',
+        howTo: ['Sujétate de las paralelas con los brazos extendidos.', 'Inclina ligeramente el torso hacia adelante.', 'Baja doblando los codos hasta 90°.', 'Empuja hacia arriba hasta extender los brazos de nuevo.'],
+        tip: 'Si es muy exigente, practica primero con los pies apoyados en el piso para quitar peso (fondos asistidos en banco).' },
+      { id: 'pike_pushups', name: 'Flexiones Pike', category: 'push', muscle: 'Hombros, Tríceps', level: 'Intermedio', desc: 'Progresión directa para la flexión en pino.',
+        howTo: ['Forma una "V" invertida con el cuerpo, manos y pies en el piso.', 'Cadera bien alta, mirando casi hacia tus pies.', 'Baja la cabeza hacia el piso doblando los codos.', 'Empuja de regreso a la posición inicial.'],
+        tip: 'Cuanto más juntes las manos a los pies, más se parece al pino y más exigente es.' },
+      { id: 'pullups', name: 'Dominadas Pronas (Pull-ups)', category: 'pull', muscle: 'Dorsal ancho, Bíceps', level: 'Intermedio', desc: 'El rey de los ejercicios de tracción.',
+        howTo: ['Agarra la barra con las palmas mirando hacia adelante.', 'Cuelga con los brazos extendidos, sin balancearte.', 'Jala tu cuerpo hasta que la barbilla pase la barra.', 'Baja controlado hasta extender los brazos por completo.'],
+        tip: 'Si todavía no logras ninguna, empieza con "negativas": sube con ayuda y baja lo más lento posible.' },
+      { id: 'chinups', name: 'Dominadas Supinas (Chin-ups)', category: 'pull', muscle: 'Bíceps, Dorsal', level: 'Principiante', desc: 'Enfoca mayor trabajo en los brazos.',
+        howTo: ['Agarra la barra con las palmas mirando hacia ti.', 'Cuelga con los brazos extendidos.', 'Jala tu cuerpo hasta que la barbilla pase la barra.', 'Baja controlado.'],
+        tip: 'Suelen ser un poco más fáciles que las pull-ups pronas: buen punto de partida.' },
+      { id: 'rows', name: 'Remos en Anillas / Barra Baja', category: 'pull', muscle: 'Espalda alta, Trapecios', level: 'Principiante', desc: 'Tracción horizontal básica.',
+        howTo: ['Sujeta la barra baja o anillas con el cuerpo inclinado, pies apoyados en el piso.', 'Cuerpo recto como una tabla.', 'Jala el pecho hacia la barra apretando la espalda.', 'Baja controlado hasta extender los brazos.'],
+        tip: 'Mientras más vertical esté tu cuerpo, más fácil es. Empieza casi de pie e inclínate más a medida que ganes fuerza.' },
+      { id: 'squats', name: 'Sentadillas libres', category: 'legs', muscle: 'Cuádriceps, Glúteos', level: 'Principiante', desc: 'Trabajo básico de tren inferior.',
+        howTo: ['Pies al ancho de los hombros, puntas ligeramente hacia afuera.', 'Baja la cadera hacia atrás y abajo como si te sentaras en una silla.', 'Baja hasta que los muslos queden paralelos al piso (o donde tu movilidad lo permita).', 'Empuja con los talones para volver a subir.'],
+        tip: 'Mantén el pecho arriba y las rodillas alineadas con los pies, sin que se junten hacia adentro.' },
+      { id: 'pistol_squats', name: 'Sentadillas Pistol', category: 'legs', muscle: 'Cuádriceps, Equilibrio', level: 'Avanzado', desc: 'Sentadilla unilateral de alta exigencia.',
+        howTo: ['De pie sobre una pierna, la otra extendida al frente.', 'Baja lentamente controlando el equilibrio.', 'Llega lo más abajo posible sin perder la forma.', 'Empuja con la pierna de apoyo para subir.'],
+        tip: 'Es un ejercicio avanzado: practica primero sentadillas normales y sentadillas búlgaras (con un pie atrás elevado) antes de intentarla.' },
+      { id: 'leg_raises', name: 'Elevaciones de Piernas colgado', category: 'core', muscle: 'Abdomen, Flexores de cadera', level: 'Intermedio', desc: 'Fortalece la sección media completa.',
+        howTo: ['Cuélgate de la barra con los brazos extendidos.', 'Sin balancearte, sube las piernas rectas o dobladas hacia el pecho.', 'Aprieta el abdomen arriba un segundo.', 'Baja controlado sin dejarte caer de golpe.'],
+        tip: 'Si es muy difícil con las piernas rectas, empieza subiendo las rodillas dobladas hacia el pecho.' },
+      { id: 'plank', name: 'Plancha Abdominal', category: 'core', muscle: 'Core isométrico', level: 'Principiante', desc: 'Estabilidad y resistencia del core.',
+        howTo: ['Apóyate en antebrazos y puntas de los pies.', 'Cuerpo en línea recta, sin subir ni bajar la cadera.', 'Aprieta el abdomen y los glúteos.', 'Mantén la posición respirando normal (no aguantes la respiración).'],
+        tip: 'Empieza aguantando 15-20 segundos y ve subiendo el tiempo cada semana.' },
+      { id: 'muscle_up', name: 'Muscle-up', category: 'skills', muscle: 'Espalda, Pecho, Potencia', level: 'Avanzado', desc: 'Transición explosiva sobre la barra.',
+        howTo: ['Parte de una dominada explosiva, jalando la barra hacia el abdomen.', 'En el punto más alto, rota las muñecas por encima de la barra (transición).', 'Termina empujando como en un fondo hasta extender los brazos arriba de la barra.'],
+        tip: 'Requiere dominadas y fondos sólidos primero (al menos 8-10 repeticiones limpias de cada uno) antes de intentarlo.' },
+      { id: 'handstand', name: 'Pino (Handstand)', category: 'skills', muscle: 'Hombros, Equilibrio', level: 'Avanzado', desc: 'Habilidad isométrica sobre manos.',
+        howTo: ['Practica primero contra una pared para perder el miedo a caer.', 'Manos al ancho de hombros, dedos bien abiertos y apoyados.', 'Sube las piernas manteniendo el core apretado.', 'Busca alinear muñecas, hombros y cadera en una línea recta.'],
+        tip: 'Es normal tardar semanas en sostenerlo: practica cortos períodos contra la pared antes de intentarlo libre.' }
     ];
 
     const presetRoutines = {
@@ -332,6 +408,13 @@
 
     // Inicialización al cargar la página
     window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('calistech_theme');
+      if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+      const icon = document.getElementById('theme-icon');
+      icon.setAttribute('data-lucide', document.documentElement.classList.contains('dark') ? 'sun' : 'moon');
+
       lucide.createIcons();
       renderPlanner();
       renderExerciseLibrary();
@@ -347,23 +430,23 @@
       // Actualizar botones de navegación (escritorio)
       document.querySelectorAll('.nav-btn').forEach(btn => {
         btn.classList.remove('bg-brand-600', 'text-white');
-        btn.classList.add('text-slate-400');
+        btn.classList.add('text-slate-500', 'dark:text-slate-400');
       });
       const activeNav = document.getElementById(`nav-${tabId}`);
       if(activeNav) {
         activeNav.classList.add('bg-brand-600', 'text-white');
-        activeNav.classList.remove('text-slate-400');
+        activeNav.classList.remove('text-slate-500', 'dark:text-slate-400');
       }
 
       // Actualizar botones de navegación (móvil)
       document.querySelectorAll('nav.md\\:hidden button').forEach(btn => {
-        btn.classList.remove('text-brand-500');
-        btn.classList.add('text-slate-400');
+        btn.classList.remove('text-brand-600', 'dark:text-brand-500');
+        btn.classList.add('text-slate-500', 'dark:text-slate-400');
       });
       const activeMob = document.getElementById(`mob-${tabId}`);
       if(activeMob) {
-        activeMob.classList.add('text-brand-500');
-        activeMob.classList.remove('text-slate-400');
+        activeMob.classList.add('text-brand-600', 'dark:text-brand-500');
+        activeMob.classList.remove('text-slate-500', 'dark:text-slate-400');
       }
 
       if(tabId === 'workout') startWorkoutSession(activeWorkoutDay);
@@ -377,14 +460,14 @@
       daysOfWeek.forEach(day => {
         const exercises = weeklyPlan[day] || [];
         const dayCard = document.createElement('div');
-        dayCard.className = 'bg-slate-800 border border-slate-700/80 rounded-2xl p-4 flex flex-col justify-between hover:border-slate-600 transition';
+        dayCard.className = 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-4 flex flex-col justify-between hover:border-brand-500/50 transition';
 
         let listHTML = exercises.map((exId, idx) => {
           const ex = exerciseDB.find(e => e.id === exId);
           return ex ? `
-            <div class="flex items-center justify-between bg-slate-900/80 p-2 rounded-lg border border-slate-700/50 mb-2 text-xs">
-              <span class="font-medium text-slate-200 truncate">${ex.name}</span>
-              <button onclick="removeExerciseFromDay('${day}', ${idx})" class="text-rose-400 hover:text-rose-300 ml-1">
+            <div class="flex items-center justify-between bg-slate-50 dark:bg-slate-900/80 p-2 rounded-lg border border-slate-200 dark:border-slate-700/50 mb-2 text-xs">
+              <span class="font-medium text-slate-700 dark:text-slate-200 truncate">${ex.name}</span>
+              <button onclick="removeExerciseFromDay('${day}', ${idx})" class="text-rose-500 dark:text-rose-400 hover:text-rose-600 dark:hover:text-rose-300 ml-1">
                 <i data-lucide="x" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -394,16 +477,16 @@
         dayCard.innerHTML = `
           <div>
             <div class="flex justify-between items-center mb-3">
-              <h3 class="font-bold text-slate-200">${day}</h3>
-              <span class="text-xs text-brand-500 font-mono">${exercises.length} ex.</span>
+              <h3 class="font-bold text-slate-800 dark:text-slate-200">${day}</h3>
+              <span class="text-xs text-brand-600 dark:text-brand-500 font-mono">${exercises.length} ex.</span>
             </div>
-            <div class="min-h-[100px]">${listHTML || '<p class="text-xs text-slate-500 italic py-4 text-center">Descanso o sin programar</p>'}</div>
+            <div class="min-h-[100px]">${listHTML || '<p class="text-xs text-slate-400 dark:text-slate-500 italic py-4 text-center">Descanso o sin programar</p>'}</div>
           </div>
-          <div class="mt-3 pt-3 border-t border-slate-700/50 flex gap-2">
-            <button onclick="openAddExerciseModal('${day}')" class="w-full py-1.5 bg-slate-700/50 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-lg transition flex items-center justify-center gap-1">
+          <div class="mt-3 pt-3 border-t border-slate-200 dark:border-slate-700/50 flex gap-2">
+            <button onclick="openAddExerciseModal('${day}')" class="w-full py-1.5 bg-slate-100 dark:bg-slate-700/50 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium rounded-lg transition flex items-center justify-center gap-1">
               <i data-lucide="plus" class="w-3.5 h-3.5"></i> Añadir
             </button>
-            <button onclick="startWorkoutSession('${day}')" class="p-1.5 bg-brand-500/10 hover:bg-brand-500/20 text-brand-400 rounded-lg transition" title="Iniciar este día">
+            <button onclick="startWorkoutSession('${day}')" class="p-1.5 bg-brand-500/10 hover:bg-brand-500/20 text-brand-600 dark:text-brand-400 rounded-lg transition" title="Iniciar este día">
               <i data-lucide="play" class="w-4 h-4"></i>
             </button>
           </div>
@@ -441,20 +524,26 @@
 
       filtered.forEach(ex => {
         const card = document.createElement('div');
-        card.className = 'bg-slate-800 border border-slate-700/80 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/50 transition group';
+        card.className = 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 rounded-2xl p-5 flex flex-col justify-between hover:border-brand-500/50 transition group';
+        const stepsHTML = (ex.howTo || []).map(step => `<li>${step}</li>`).join('');
         card.innerHTML = `
           <div>
             <div class="flex justify-between items-start mb-2">
-              <span class="text-xs px-2 py-0.5 rounded-full bg-slate-700 text-slate-300 border border-slate-600 capitalize">${ex.category}</span>
-              <span class="text-xs font-medium text-brand-400">${ex.level}</span>
+              <span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-600 capitalize">${ex.category}</span>
+              <span class="text-xs font-medium text-brand-600 dark:text-brand-400">${ex.level}</span>
             </div>
-            <h3 class="font-bold text-white text-lg group-hover:text-brand-400 transition mb-1">${ex.name}</h3>
-            <p class="text-xs text-slate-400 mb-3">${ex.desc}</p>
-            <div class="text-xs text-slate-300 bg-slate-900/60 p-2 rounded-lg mb-4">
-              <strong class="text-slate-400">Músculos:</strong> ${ex.muscle}
+            <h3 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-brand-600 dark:group-hover:text-brand-400 transition mb-1">${ex.name}</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 mb-3">${ex.desc}</p>
+            <div class="text-xs text-slate-600 dark:text-slate-300 bg-slate-50 dark:bg-slate-900/60 p-2 rounded-lg mb-3">
+              <strong class="text-slate-500 dark:text-slate-400">Músculos:</strong> ${ex.muscle}
             </div>
+            <details class="mb-4 text-xs text-slate-600 dark:text-slate-300">
+              <summary class="cursor-pointer font-medium text-brand-600 dark:text-brand-400 select-none">Cómo hacerlo paso a paso</summary>
+              <ol class="list-decimal list-inside space-y-1 mt-2 mb-2">${stepsHTML}</ol>
+              ${ex.tip ? `<p class="bg-brand-500/10 text-brand-700 dark:text-brand-300 p-2 rounded-lg mt-2"><strong>Tip:</strong> ${ex.tip}</p>` : ''}
+            </details>
           </div>
-          <button onclick="addExerciseToDayPrompt('${ex.id}')" class="w-full py-2 bg-slate-700 hover:bg-brand-600 hover:text-slate-950 text-slate-200 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1">
+          <button onclick="addExerciseToDayPrompt('${ex.id}')" class="w-full py-2 bg-slate-100 dark:bg-slate-700 hover:bg-brand-600 hover:text-white text-slate-700 dark:text-slate-200 text-xs font-bold rounded-xl transition flex items-center justify-center gap-1">
             <i data-lucide="plus-circle" class="w-4 h-4"></i> Agregar al Plan
           </button>
         `;
@@ -499,19 +588,19 @@
       const container = document.getElementById('active-workout-list');
 
       if(exercises.length === 0) {
-        container.innerHTML = `<p class="text-slate-400 text-center py-6">No hay ejercicios asignados para el ${day}. ¡Añade algunos en el planificador!</p>`;
+        container.innerHTML = `<p class="text-slate-500 dark:text-slate-400 text-center py-6">No hay ejercicios asignados para el ${day}. ¡Añade algunos en el planificador!</p>`;
         return;
       }
 
       container.innerHTML = exercises.map(exId => {
         const ex = exerciseDB.find(e => e.id === exId);
         return `
-          <div class="bg-slate-900 border border-slate-700/80 p-4 rounded-xl">
-            <h4 class="font-bold text-white mb-2">${ex ? ex.name : exId}</h4>
+          <div class="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700/80 p-4 rounded-xl">
+            <h4 class="font-bold text-slate-900 dark:text-white mb-2">${ex ? ex.name : exId}</h4>
             <div class="grid grid-cols-3 gap-2">
-              <input type="number" placeholder="Serie 1 (reps)" class="workout-rep-input bg-slate-800 border border-slate-700 text-xs text-slate-200 p-2 rounded-lg outline-none focus:border-brand-500">
-              <input type="number" placeholder="Serie 2 (reps)" class="workout-rep-input bg-slate-800 border border-slate-700 text-xs text-slate-200 p-2 rounded-lg outline-none focus:border-brand-500">
-              <input type="number" placeholder="Serie 3 (reps)" class="workout-rep-input bg-slate-800 border border-slate-700 text-xs text-slate-200 p-2 rounded-lg outline-none focus:border-brand-500">
+              <input type="number" placeholder="Serie 1 (reps)" class="workout-rep-input bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 p-2 rounded-lg outline-none focus:border-brand-500">
+              <input type="number" placeholder="Serie 2 (reps)" class="workout-rep-input bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 p-2 rounded-lg outline-none focus:border-brand-500">
+              <input type="number" placeholder="Serie 3 (reps)" class="workout-rep-input bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 p-2 rounded-lg outline-none focus:border-brand-500">
             </div>
           </div>
         `;
@@ -600,8 +689,8 @@
           maintainAspectRatio: false,
           plugins: { legend: { display: false } },
           scales: {
-            x: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } },
-            y: { grid: { color: '#334155' }, ticks: { color: '#94a3b8' } }
+            x: { grid: { color: 'rgba(148, 163, 184, 0.2)' }, ticks: { color: '#94a3b8' } },
+            y: { grid: { color: 'rgba(148, 163, 184, 0.2)' }, ticks: { color: '#94a3b8' } }
           }
         }
       });
@@ -662,8 +751,9 @@
 
     function toggleTheme() {
       document.documentElement.classList.toggle('dark');
-      const icon = document.getElementById('theme-icon');
       const isDark = document.documentElement.classList.contains('dark');
+      localStorage.setItem('calistech_theme', isDark ? 'dark' : 'light');
+      const icon = document.getElementById('theme-icon');
       icon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
       lucide.createIcons();
     }
